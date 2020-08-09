@@ -13,6 +13,7 @@ import { Card } from './card/entities/card.entity';
 import { CardTypes } from './card/entities/card-types.entity';
 import { TransactionsModule } from './transactions/transactions.module';
 import { Transaction } from './transactions/transaction.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -29,7 +30,8 @@ import { Transaction } from './transactions/transaction.entity';
     ClientsModule,
     AccountsModule,
     CardsModule,
-    TransactionsModule,],
+    TransactionsModule,
+    AuthModule,],
   controllers: [AppController],
   providers: [AppService],
 })

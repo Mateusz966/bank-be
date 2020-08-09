@@ -14,6 +14,9 @@ export class Client {
   @Column({type: 'varchar', nullable: false})
   email: string;
 
-  @Column({type: 'float', nullable: false})
+  @Column({type: 'varchar', nullable: false})
+  password: string;
+
+  @Column({type: 'float', nullable: false, default: 0})
   balance: number;
 }

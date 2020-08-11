@@ -3,6 +3,7 @@ import { hash, compare } from 'bcrypt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Client } from 'src/clients/client.entity';
 import { Repository } from 'typeorm';
+import { JwtService } from '@nestjs/jwt';
 
 
 
@@ -12,6 +13,7 @@ export class AuthService {
   constructor(
     @InjectRepository(Client)
     private readonly clientRepository: Repository<Client>,
+    private readonly jwtService: JwtService,
   ) {}
 
   async hashPassword(password: string): Promise<string> {
@@ -35,6 +37,16 @@ export class AuthService {
       }
     } catch (error) {
       throw new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+  }
+
+  async login(user: any) {
+    const payload = {
+      email: user.email,
+      sub: user.id
+    };
+    return {
+      token: this.jwtService.sign(payload)
     }
   }
 

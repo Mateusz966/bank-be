@@ -1,6 +1,7 @@
-import { Controller, Post, Body, HttpException, HttpStatus } from '@nestjs/common';
+import { Controller, Post, Body, HttpException, HttpStatus, Get, UseGuards, Req } from '@nestjs/common';
 import { ClientsService } from 'src/clients/clients.service';
 import { AuthService } from './auth.service';
+import { JwtAuthGuard } from './jwt-auth.guard';
 
 
 
@@ -14,7 +15,6 @@ export class AuthController {
 
   @Post('sign-up')
   async registerUser(@Body() user: any) {
-    console.log(user);
     const { password } = user;
     try {
       const hashedPassword =  await this.authService.hashPassword(password);
@@ -24,6 +24,13 @@ export class AuthController {
     } catch (error) {
       throw new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('user')
+  async getUserDetails(@Req() request: any) {
+    const { email } = request.user;
+    return await this.clientsService.findUser(email);
   }
 
 

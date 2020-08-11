@@ -7,13 +7,14 @@ import { Client } from './clients/client.entity';
 import { AccountsModule } from './accounts/accounts.module';
 import { Account } from './accounts/entitties/account.entity';
 import { AccountSetting } from './accounts/entitties/account-setting.entity';
-import { AccountTypes } from './accounts/entitties/account-types.entity';
 import { CardsModule } from './card/cards.module';
 import { Card } from './card/entities/card.entity';
 import { CardTypes } from './card/entities/card-types.entity';
 import { TransactionsModule } from './transactions/transactions.module';
 import { Transaction } from './transactions/transaction.entity';
 import { AuthModule } from './auth/auth.module';
+import { ClientAccounts } from './accounts/entitties/client-accounts.entity';
+
 
 @Module({
   imports: [
@@ -24,14 +25,16 @@ import { AuthModule } from './auth/auth.module';
     username: 'root',
     password: '1234',
     database: 'bank',
-    entities: [Client, Account, AccountSetting, AccountTypes, Card, CardTypes, Transaction],
+    entities: [Client, Account, AccountSetting, Card, CardTypes, Transaction, ClientAccounts],
     synchronize: true,
   }),
+    TypeOrmModule.forFeature([Client]),
     ClientsModule,
     AccountsModule,
     CardsModule,
     TransactionsModule,
-    AuthModule,],
+    AuthModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

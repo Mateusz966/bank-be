@@ -6,8 +6,8 @@ export class AccountSetting {
   id: number;
 
   @Column({type: 'int', nullable: false})
-  payments_until_free: number;
+  paymentsUntilFree: number;
 
   @Column({type: 'boolean', nullable: false})
-  physical_card: boolean;
+  physicalCard: boolean;
 }

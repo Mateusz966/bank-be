@@ -8,6 +8,6 @@ export class Card {
   id: number;
 
   @ManyToOne(type => CardTypes, card_types => card_types.id)
-  card_type: number;
+  cardType: number;
 }
 

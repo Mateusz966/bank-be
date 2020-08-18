@@ -8,10 +8,10 @@ export class Account {
   id: number;
 
   @Column({type: 'varchar', nullable: false})
-  account_name: string;
+  accountName: string;
 
   @ManyToOne(type => AccountSetting, account_settings => account_settings.id )
-  account_settings: number;
+  accountSettings: number;
 
   @ManyToOne(type => Card, card => card.id, {nullable: true})
   card: number;

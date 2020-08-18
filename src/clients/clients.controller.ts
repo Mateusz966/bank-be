@@ -11,11 +11,10 @@ export class ClientsController {
 
 
   @Post('/create-account')
-  async create(@Body() data, @UserObj() user) {
+  async create(@Body() data) {
     try {
       const { userId, accountId } = data;
-      console.log(user);
-      // await this.clientsService.createClientAccount(userId, accountId);
+      await this.clientsService.createClientAccount(userId, accountId);
     } catch (e) {
       throw e;
     }

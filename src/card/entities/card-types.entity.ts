@@ -7,9 +7,9 @@ export class CardTypes {
   id: number;
 
   @Column({type: 'varchar'})
-  card_name: string;
+  cardName: string;
 
   @Column({type: 'float'})
-  annual_interest: number;
+  annualInterest: number;
 }
 

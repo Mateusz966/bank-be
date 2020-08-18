@@ -19,8 +19,7 @@ export class AuthController {
     try {
       const hashedPassword =  await this.authService.hashPassword(password);
       const userToSave = { ...user, password: hashedPassword };
-      const savedUser = await this.clientsService.saveUser(userToSave);
-      return savedUser;
+      await this.clientsService.saveUser(userToSave);
     } catch (error) {
       throw new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }

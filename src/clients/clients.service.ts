@@ -38,15 +38,7 @@ export class ClientsService {
 
   async createClientAccount(client: number, account: number) {
     try {
-      await this.clientAccountsRepository.createQueryBuilder()
-        .insert()
-        .values(
-          {
-            account,
-            client,
-          }
-        )
-        .execute();
+      await this.clientAccountsRepository.save({client, account})
     } catch (e) {
       throw e;
     }

@@ -2,6 +2,7 @@ import { Controller, Post, Body, HttpException, HttpStatus, Get, UseGuards, Req 
 import { ClientsService } from 'src/clients/clients.service';
 import { AuthService } from './auth.service';
 import { JwtAuthGuard } from './jwt-auth.guard';
+import { ClientDto, ClientReq } from '../../types/client';
 
 
 
@@ -14,7 +15,7 @@ export class AuthController {
   ) { }
 
   @Post('sign-up')
-  async registerUser(@Body() user: any) {
+  async registerUser(@Body() user: ClientDto) {
     const { password } = user;
     try {
       const hashedPassword =  await this.authService.hashPassword(password);

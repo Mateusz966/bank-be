@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { ClientsService } from './clients.service';
-import { UserObj } from '../../decorators/user.descorator';
+
 
 
 @Controller('clients')
@@ -19,5 +19,4 @@ export class ClientsController {
       throw e;
     }
   }
-
 }

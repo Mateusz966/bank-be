@@ -7,11 +7,12 @@ export class Client {
   id: number;
 
   @Column(type => UserInfo)
-  client: UserInfo
+  worker: UserInfo
 
   @Column({type: 'varchar', nullable: false})
   password: string;
 
-  @Column({type: 'float', nullable: false, default: 0})
-  balance: number;
+  @Column({type: 'varchar', nullable: false})
+  zipCodeZone: string;
+
 }

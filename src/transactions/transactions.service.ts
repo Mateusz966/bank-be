@@ -14,15 +14,9 @@ export class TransactionsService {
     private readonly transactionRepository: Repository<Transaction>,
   ) {};
 
-  async fund({id, amount}: FundAccountReq) {
+  async fund({accountId, amount}: FundAccountReq) {
     try {
-      await this.clientAccountsRepository.createQueryBuilder()
-      .update()
-      .set({
-        balance: () => `balance + ${amount}`
-      })
-      .where('id = :id', {id})
-      .execute();
+      await this.clientAccountsRepository.update({ id: accountId }, { balance: () => `balance + ${amount}` })
     } catch (e) {
       throw e;
     }

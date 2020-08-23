@@ -14,6 +14,8 @@ import { TransactionsModule } from './transactions/transactions.module';
 import { Transaction } from './transactions/transaction.entity';
 import { AuthModule } from './auth/auth.module';
 import { ClientAccounts } from './accounts/entitties/client-accounts.entity';
+import { WorkersModule } from './workers/workers.module';
+import { ZipCodeModule } from './zip-code/zip-code.module';
 
 
 @Module({
@@ -27,6 +29,7 @@ import { ClientAccounts } from './accounts/entitties/client-accounts.entity';
     database: 'bank',
     entities: [Client, Account, AccountSetting, Card, CardTypes, Transaction, ClientAccounts],
     synchronize: true,
+      logging: true,
   }),
     TypeOrmModule.forFeature([Client]),
     ClientsModule,
@@ -34,6 +37,8 @@ import { ClientAccounts } from './accounts/entitties/client-accounts.entity';
     CardsModule,
     TransactionsModule,
     AuthModule,
+    WorkersModule,
+    ZipCodeModule,
   ],
   controllers: [AppController],
   providers: [AppService],

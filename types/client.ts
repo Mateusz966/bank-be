@@ -1,4 +1,4 @@
-import { IsEmail, IsString } from 'class-validator';
+import { IsEmail, IsNumber, IsString } from 'class-validator';
 
 
 export class ClientDto implements ClientReq {
@@ -14,6 +14,9 @@ export class ClientDto implements ClientReq {
   @IsString()
   password;
 
+  @IsNumber()
+  balance;
+
 }
 
 export interface ClientReq {
@@ -21,6 +24,7 @@ export interface ClientReq {
   lastName: string;
   email: string;
   password: string;
+  balance: number;
 };
 
 export interface ClientRes {

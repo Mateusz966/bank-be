@@ -12,9 +12,9 @@ export class TransactionsController {
 
   @Post('/fund-account')
   async fundAccount(@Body() fund: FundAccountReq) {
-    const { id, amount } = fund;
+    const { accountId, amount } = fund;
     try {
-      await this.transactionsService.fund({id, amount})
+      await this.transactionsService.fund({accountId, amount})
     } catch (e) {
       throw e;
     }

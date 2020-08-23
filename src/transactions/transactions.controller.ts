@@ -1,5 +1,6 @@
-import { Controller, Post } from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
 import { TransactionsService } from './transactions.service';
+import { FundAccountReq } from 'types/transaction';
 
 
 @Controller('transactions')
@@ -10,9 +11,10 @@ export class TransactionsController {
   ) {}
 
   @Post('/fund-account')
-  async fundAccount() {
+  async fundAccount(@Body() fund: FundAccountReq) {
+    const { id, amount } = fund;
     try {
-
+      await this.transactionsService.fund({id, amount})
     } catch (e) {
       throw e;
     }

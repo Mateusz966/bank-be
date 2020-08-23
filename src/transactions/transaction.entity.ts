@@ -15,6 +15,6 @@ export class Transaction {
   account: number;
 
   @Column({type: 'float'})
-  sum: number;
+  amount: number;
 }
 

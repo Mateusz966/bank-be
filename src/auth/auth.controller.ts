@@ -32,6 +32,4 @@ export class AuthController {
     const { email } = request.user;
     return await this.clientsService.findUser(email);
   }
-
-
 }

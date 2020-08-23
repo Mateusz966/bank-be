@@ -2,7 +2,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { UserInfo } from '../embedded-entities/user-info.entity';
 
 @Entity()
-export class Client {
+export class Worker {
   @PrimaryGeneratedColumn()
   id: number;
 

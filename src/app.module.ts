@@ -16,6 +16,7 @@ import { AuthModule } from './auth/auth.module';
 import { ClientAccounts } from './accounts/entitties/client-accounts.entity';
 import { WorkersModule } from './workers/workers.module';
 import { ZipCodeModule } from './zip-code/zip-code.module';
+import { Worker } from './workers/worker.entity';
 
 
 @Module({
@@ -27,7 +28,7 @@ import { ZipCodeModule } from './zip-code/zip-code.module';
     username: 'root',
     password: '1234',
     database: 'bank',
-    entities: [Client, Account, AccountSetting, Card, CardTypes, Transaction, ClientAccounts],
+    entities: [Client, Account, AccountSetting, Card, CardTypes, Transaction, ClientAccounts, Worker],
     synchronize: true,
       logging: true,
   }),

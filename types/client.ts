@@ -3,13 +3,13 @@ import { IsEmail, IsNumber, IsString } from 'class-validator';
 
 export class ClientDto implements ClientReq {
   @IsString()
-  firstName;
+  clientFirstName;
 
   @IsString()
-  lastName;
+  clientLastName;
 
   @IsEmail()
-  email;
+  clientEmail;
 
   @IsString()
   password;
@@ -20,9 +20,9 @@ export class ClientDto implements ClientReq {
 }
 
 export interface ClientReq {
-  firstName: string;
-  lastName: string;
-  email: string;
+  clientFirstName: string;
+  clientLastName: string;
+  clientEmail: string;
   password: string;
   balance: number;
 };

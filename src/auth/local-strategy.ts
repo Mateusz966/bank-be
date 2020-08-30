@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import { Strategy } from 'passport-local';
 import { PassportStrategy } from '@nestjs/passport';
 import { Injectable, UnauthorizedException, HttpException, HttpStatus } from '@nestjs/common';

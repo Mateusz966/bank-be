@@ -3,18 +3,21 @@ import { Column } from 'typeorm';
 export class UserInfo {
 
   @Column({type: 'varchar', nullable: false})
-  firstName: string;
+  userFirstName: string;
 
   @Column({type: 'varchar', nullable: false})
-  lastName: string;
+  userLastName: string;
 
   @Column({type: 'varchar', nullable: false})
-  email: string;
+  userEmail: string;
 
   @Column({type: 'varchar', nullable: false})
-  city: string;
+  userPassword: string;
 
   @Column({type: 'varchar', nullable: false})
-  zipCode: string;
+  userCity: string;
+
+  @Column({type: 'varchar', nullable: false})
+  userZipCode: string;
 
 }

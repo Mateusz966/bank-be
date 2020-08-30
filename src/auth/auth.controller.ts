@@ -6,6 +6,7 @@ import { ClientDto, ClientReq } from '../../types/client';
 
 
 
+
 @Controller('auth')
 export class AuthController {
 
@@ -16,11 +17,11 @@ export class AuthController {
 
   @Post('sign-up')
   async registerUser(@Body() user: ClientDto) {
-    const { password } = user;
+    const { userPassword } = user;
     try {
-      const hashedPassword =  await this.authService.hashPassword(password);
+      const hashedPassword =  await this.authService.hashPassword(userPassword);
       const userToSave = { ...user, password: hashedPassword };
-      await this.clientsService.saveUser(userToSave);
+      await this.clientsService.saveUser(userPassword);
     } catch (error) {
       throw new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -29,7 +30,7 @@ export class AuthController {
   @UseGuards(JwtAuthGuard)
   @Get('user')
   async getUserDetails(@Req() request: any) {
-    const { email } = request.user;
-    return await this.clientsService.findUser(email);
+    const { userEmail } = request.user;
+    return await this.clientsService.findUser(userEmail);
   }
 }

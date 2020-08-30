@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm'
 import { Client } from './client.entity';
 import { Repository } from 'typeorm';
 import { ClientAccounts } from '../accounts/entitties/client-accounts.entity';
-import { ClientReq, ClientRes } from '../../types/client';
+import { ClientDto, ClientReq, ClientRes } from '../../types/client';
 
 @Injectable()
 export class ClientsService {
@@ -14,11 +14,11 @@ export class ClientsService {
     private readonly clientAccountsRepository: Repository<ClientAccounts>,
   ) { }
 
-  async findUser(email: string): Promise<ClientRes> {
+  async findUser(userEmail: string): Promise<ClientRes> {
     try {
       const user = await this.clientRepository.findOne({
         where: {
-          email,
+          userEmail,
         }
       });
       return user ? user : undefined;
@@ -27,7 +27,7 @@ export class ClientsService {
     }
   }
 
-  async saveUser(user: ClientReq): Promise<ClientReq> {
+  async saveUser(user: ClientDto): Promise<ClientDto> {
     try {
       await this.clientRepository.insert(user);
       return user;

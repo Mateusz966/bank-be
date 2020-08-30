@@ -4,6 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Client } from 'src/clients/client.entity';
 import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
+import { ClientDto, ClientRes } from 'types/client';
 
 
 
@@ -11,7 +12,7 @@ import { JwtService } from '@nestjs/jwt';
 export class AuthService {
 
   constructor(
-    @InjectRepository(Client)
+    @InjectRepository(Client) 
     private readonly clientRepository: Repository<Client>,
     private readonly jwtService: JwtService,
   ) {}
@@ -26,13 +27,13 @@ export class AuthService {
     }
   }
 
-  async validateUser(user: any): Promise<any> {
-    const { email } = user;
+  async validateUser(user: ClientDto): Promise<ClientRes | Worker> {
+    const { userEmail } = user;
     try {
-      const userInDb = await this.clientRepository.findOne({ email, });
+      const userInDb = await this.clientRepository.findOne({ userEmail, });
       if (userInDb) {
-        const isUserValid = await compare(user.password, userInDb.password);
-        const { password, ...userRes  } = userInDb;
+        const isUserValid = await compare(user.userPassword, userInDb.userPassword);
+        const { userPassword, ...userRes  } = userInDb;
         return isUserValid ? userRes : undefined;
       }
     } catch (error) {
@@ -41,12 +42,12 @@ export class AuthService {
   }
 
   async login(user: any) {
-    const { clientemail, id, firstName, lastName, balance } = user
+    const { userEmail, id, userFirstName, userLastName, balance } = user
     const payload = {
-      email,
+      userEmail,
       id,
-      firstName,
-      lastName,
+      userFirstName,
+      userLastName,
       balance
     };
     return {

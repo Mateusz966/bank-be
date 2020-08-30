@@ -1,36 +1,38 @@
-import { IsEmail, IsNumber, IsString } from 'class-validator';
+import { IsEmail, IsNumber, IsString, IsPostalCode } from 'class-validator';
+import { UserDefault} from './user-default';
 
 
 export class ClientDto implements ClientReq {
-  @IsString()
-  clientFirstName;
-
-  @IsString()
-  clientLastName;
-
-  @IsEmail()
-  clientEmail;
-
-  @IsString()
-  password;
-
   @IsNumber()
   balance;
 
+  @IsString()
+  userFirstName;
+
+  @IsString()
+  userLastName;
+
+  @IsEmail()
+  userEmail;
+
+  @IsString()
+  userPassword;
+
+  @IsPostalCode('PL')
+  userZipCode;
+
+  @IsString()
+  userCity;
 }
 
-export interface ClientReq {
-  clientFirstName: string;
-  clientLastName: string;
-  clientEmail: string;
-  password: string;
+export interface ClientReq extends UserDefault {
   balance: number;
 };
 
 export interface ClientRes {
   id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
+  userFirstName: string;
+  userLastName: string;
+  userEmail: string;
   balance: number;
 };

@@ -16,7 +16,7 @@ import { AuthModule } from './auth/auth.module';
 import { ClientAccounts } from './accounts/entitties/client-accounts.entity';
 import { WorkersModule } from './workers/workers.module';
 import { ZipCodeModule } from './zip-code/zip-code.module';
-import { Worker } from './workers/worker.entity';
+import { Worker } from './workers/entities/worker.entity';
 
 
 @Module({

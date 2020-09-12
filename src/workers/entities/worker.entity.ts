@@ -1,5 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { UserInfo } from '../embedded-entities/user-info.entity';
+import { UserInfo } from '../../embedded-entities/user-info.entity';
 
 @Entity()
 export class Worker {

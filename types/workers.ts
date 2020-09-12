@@ -4,22 +4,22 @@ import { UserDefault } from "./user-default";
 export class WorkerDto implements WorkerReq {
 
     @IsString()
-    userFirstName;
+    firstName;
   
     @IsString()
-    userLastName;
+    lastName;
   
     @IsEmail()
-    userEmail;
+    email;
   
     @IsString()
-    userPassword;
+    password;
   
     @IsPostalCode('PL')
-    userZipCode;
+    zipCode;
   
     @IsString()
-    userCity;
+    city;
 
     @IsPostalCode('PL')
     zipCodeZone: string;

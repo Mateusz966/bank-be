@@ -14,11 +14,11 @@ export class ClientsService {
     private readonly clientAccountsRepository: Repository<ClientAccounts>,
   ) { }
 
-  async findUser(userEmail: string): Promise<ClientRes> {
+  async findUser(email: string): Promise<ClientRes> {
     try {
       const user = await this.clientRepository.findOne({
         where: {
-          userEmail,
+          email,
         }
       });
       return user ? user : undefined;

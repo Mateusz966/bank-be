@@ -7,22 +7,22 @@ export class ClientDto implements ClientReq {
   balance;
 
   @IsString()
-  userFirstName;
+  firstName;
 
   @IsString()
-  userLastName;
+  lastName;
 
   @IsEmail()
-  userEmail;
+  email;
 
   @IsString()
-  userPassword;
+  password;
 
   @IsPostalCode('PL')
-  userZipCode;
+  zipCode;
 
   @IsString()
-  userCity;
+  city;
 }
 
 export interface ClientReq extends UserDefault {
@@ -31,8 +31,8 @@ export interface ClientReq extends UserDefault {
 
 export interface ClientRes {
   id: number;
-  userFirstName: string;
-  userLastName: string;
-  userEmail: string;
+  firstName: string;
+  lastName: string;
+  email: string;
   balance: number;
 };

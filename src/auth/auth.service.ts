@@ -28,12 +28,12 @@ export class AuthService {
   }
 
   async validateUser(user: ClientDto): Promise<ClientRes | Worker> {
-    const { userEmail } = user;
+    const { email } = user;
     try {
-      const userInDb = await this.clientRepository.findOne({ userEmail, });
+      const userInDb = await this.clientRepository.findOne({ email, });
       if (userInDb) {
-        const isUserValid = await compare(user.userPassword, userInDb.userPassword);
-        const { userPassword, ...userRes  } = userInDb;
+        const isUserValid = await compare(user.password, userInDb.password);
+        const { password, ...userRes  } = userInDb;
         return isUserValid ? userRes : undefined;
       }
     } catch (error) {
@@ -42,12 +42,12 @@ export class AuthService {
   }
 
   async login(user: any) {
-    const { userEmail, id, userFirstName, userLastName, balance } = user
+    const { email, id, firstName, lastName, balance } = user
     const payload = {
-      userEmail,
+      email,
       id,
-      userFirstName,
-      userLastName,
+      firstName,
+      lastName,
       balance
     };
     return {

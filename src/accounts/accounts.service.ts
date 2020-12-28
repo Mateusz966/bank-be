@@ -11,12 +11,12 @@ export class AccountsService {
     private readonly accountRepository: Repository<Account>,
   ) {}
 
-  async create() {
-    this.accountRepository.createQueryBuilder()
-      .insert()
-      .values({
+  // async create() {
+  //   this.accountRepository.createQueryBuilder()
+  //     .insert()
+  //     .values({
 
-      })
-  }
+  //     })
+  // }
 
 }

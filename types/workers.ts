@@ -28,3 +28,10 @@ export class WorkerDto implements WorkerReq {
 export interface WorkerReq extends UserDefault {
     zipCodeZone: string;
   };
+
+  export interface WorkerRes {
+    id: number;
+    firstName: string;
+    lastName: string;
+    email: string;
+  };

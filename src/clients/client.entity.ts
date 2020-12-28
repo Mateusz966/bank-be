@@ -7,23 +7,8 @@ export class Client extends ClientDto {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({type: 'varchar', nullable: false})
-  firstName: string;
-
-  @Column({type: 'varchar', nullable: false})
-  lastName: string;
-
-  @Column({type: 'varchar', nullable: false})
-  email: string;
-
-  @Column({type: 'varchar', nullable: false})
-  password: string;
-
-  @Column({type: 'varchar', nullable: false})
-  city: string;
-
-  @Column({type: 'varchar', nullable: false})
-  zipCode: string;
+  @Column((type) => UserInfo, {prefix: false})
+  user: UserInfo
 
   @Column({type: 'float', nullable: false, default: 0})
   balance: number;

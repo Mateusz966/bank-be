@@ -5,6 +5,7 @@ import { Client } from 'src/clients/client.entity';
 import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
 import { ClientDto, ClientRes } from 'types/client';
+import { WorkerRes } from 'types/workers';
 
 
 
@@ -27,7 +28,7 @@ export class AuthService {
     }
   }
 
-  async validateUser(user: ClientDto): Promise<ClientRes | Worker> {
+  async validateUser(user: ClientDto): Promise<ClientRes | WorkerRes> {
     const { email } = user;
     try {
       const userInDb = await this.clientRepository.findOne({ email, });

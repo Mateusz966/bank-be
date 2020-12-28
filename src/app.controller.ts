@@ -19,5 +19,4 @@ export class AppController {
   getDetails(@Req() req) {
     return req.user;
   }
-
 };

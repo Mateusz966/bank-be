@@ -5,19 +5,19 @@ export class WorkerDto implements WorkerReq {
 
     @IsString()
     firstName;
-  
+
     @IsString()
     lastName;
-  
+
     @IsEmail()
     email;
-  
+
     @IsString()
     password;
-  
+
     @IsPostalCode('PL')
     zipCode;
-  
+
     @IsString()
     city;
 
@@ -27,11 +27,11 @@ export class WorkerDto implements WorkerReq {
 
 export interface WorkerReq extends UserDefault {
     zipCodeZone: string;
-  };
+};
 
-  export interface WorkerRes {
+export interface WorkerRes {
     id: number;
     firstName: string;
     lastName: string;
     email: string;
-  };
+};

@@ -19,7 +19,9 @@ export class ClientsService {
     try {
       const user = await this.clientRepository.findOne({
         where: {
-          email,
+          user: {
+            email,
+          }
         }
       });
       return user ? user : undefined;

@@ -1,6 +1,5 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { UserInfo } from '../embedded-entities/user-info.entity';
-import { UserDefault } from 'types/user-default';
 import { ClientDto } from 'types/client';
 
 @Entity()
@@ -8,8 +7,23 @@ export class Client extends ClientDto {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column((type) => UserInfo, {prefix: false})
-  user: UserInfo
+  @Column({type: 'varchar', nullable: false})
+  firstName: string;
+
+  @Column({type: 'varchar', nullable: false})
+  lastName: string;
+
+  @Column({type: 'varchar', nullable: false})
+  email: string;
+
+  @Column({type: 'varchar', nullable: false})
+  password: string;
+
+  @Column({type: 'varchar', nullable: false})
+  city: string;
+
+  @Column({type: 'varchar', nullable: false})
+  zipCode: string;
 
   @Column({type: 'float', nullable: false, default: 0})
   balance: number;

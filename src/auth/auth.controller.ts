@@ -21,7 +21,14 @@ export class AuthController {
     try {
       const hashedPassword =  await this.authService.hashPassword(password);
       const userToSave = { ...user, password: hashedPassword };
-      await this.clientsService.saveUser(password);
+      const registeredUser = await this.clientsService.findUser(user.email);
+      console.log(registeredUser)
+      if (!registeredUser) {
+        console.log('dupa')
+        await this.clientsService.saveUser(userToSave);
+      } else {
+        throw new HttpException('Given email is taken', HttpStatus.BAD_REQUEST);
+      }
     } catch (error) {
       throw new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR);
     }

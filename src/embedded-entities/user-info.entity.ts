@@ -1,6 +1,7 @@
 import { Column } from 'typeorm';
+import { UserDefault } from 'types/user-default';
 
-export class UserInfo {
+export class UserInfo implements UserDefault {
 
   @Column({type: 'varchar', nullable: false})
   firstName: string;

@@ -33,7 +33,7 @@ export class ClientsService {
   }
 
   async saveUser(user: ClientDto): Promise<ClientDto> {
-    console.log('serv', user);
+
     try {
       const client = new Client();
       client.user = new UserInfo();
@@ -54,7 +54,6 @@ export class ClientsService {
 
 
   async createClientAccount(client: Client, account: Account) {
-    console.log(client, account)
     try {
       const clientAccount = new ClientAccounts();
       clientAccount.account = account

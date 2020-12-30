@@ -15,7 +15,6 @@ export class TransactionsService {
   ) {};
 
   async fund({accountId, amount}: FundAccountReq) {
-    console.log(accountId, amount);
     try {
       await this.clientAccountsRepository.update({ id: accountId }, { balance: () => `balance + ${amount}` })
     } catch (e) {

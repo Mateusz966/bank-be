@@ -7,11 +7,11 @@ export class ClientAccounts {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(type => Client, client => client.id)
-  client: number
+  @ManyToOne(() => Client, client => client)
+  client: Client
 
-  @ManyToOne(type => Account, account => account.id)
-  account: number;
+  @ManyToOne(() => Account, account => account)
+  account: Account;
 
   @Column({type: 'float', default: 0})
   balance: number;

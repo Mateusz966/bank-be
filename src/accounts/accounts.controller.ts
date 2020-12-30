@@ -12,6 +12,6 @@ export class AccountsController {
   @UseGuards(JwtAuthGuard)
   @Post('/new')
   async createAccount(@Body() data) {
-
+    
   };
 }

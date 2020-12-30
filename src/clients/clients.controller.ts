@@ -15,8 +15,9 @@ export class ClientsController {
   @Post('/create-account')
   async create(@Body() data, @UserObj() user) {
     try {
-      const { userId, accountId } = data;
-      await this.clientsService.createClientAccount(userId, accountId);
+      const { accountId } = data;
+      const { id } = user;
+      await this.clientsService.createClientAccount(id, accountId);
     } catch (e) {
       throw e;
     }

@@ -8,6 +8,4 @@ export class AccountSetting {
   @Column({type: 'int', nullable: false})
   paymentsUntilFree: number;
 
-  @Column({type: 'boolean', nullable: false})
-  physicalCard: boolean;
 }
